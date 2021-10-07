@@ -1,0 +1,59 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Main{
+	public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int t = sc.nextInt();
+
+        for (int i = 0; i < t; i++) {
+            int n = sc.nextInt();
+            int s = sc.nextInt();
+
+            int[] m = new int[n];
+            for (int j = 0; j < n; j++) {
+                m[j] = sc.nextInt();
+            }
+            
+            Solution obj = new Solution();
+            ArrayList<Integer> res = obj.subarraySum(m, n, s);
+            for(int ii = 0;ii<res.size();ii++)
+                System.out.print(res.get(ii) + " ");
+            System.out.println();
+        }
+    }
+
+}
+
+
+
+class Solution
+{
+    //Function to find a continuous sub-array which adds up to a given number.
+    static ArrayList<Integer> subarraySum(int[] arr, int n, int s) 
+    {
+        ArrayList<Integer> f = new ArrayList<Integer>();
+        int sum=arr[0];
+        int l=0,h=0;
+        while((l<n) && (h<n)){
+            if(sum==s){
+                f.add(l+1);
+                f.add(h+1);
+                return f;
+            }
+            else if(sum<s){
+                h++;
+                if(h<n)
+                    sum=sum+arr[h];
+            }
+            else if(sum>s){
+                sum=sum-arr[l];
+                l++;
+            }
+        }
+        f.add(-1);
+        return f;
+    }
+}
