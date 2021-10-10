@@ -1,0 +1,43 @@
+import java.util.*;
+
+public class star5 {
+    public static void main(String[] arg){
+
+        System.out.print("Enter the number : ");
+        Scanner scn= new Scanner(System.in);
+        int n=scn.nextInt();
+        int flow=1;
+        for(int i=1;i<=n;i++)
+        {
+            int sum=0;
+            for(int k=i;k<n;k++)
+            {
+                {
+                System.out.print("  ");
+                }
+            }
+            for(int j=1;j<=2*i-1;j++)
+            {
+                
+                if(i==j)
+                {
+                    int flow2 = flow;
+                    for(int l=j+1;l<=2*i-1;l++)
+                    {
+                        flow2 += 2;
+                        sum += flow2;
+                    }
+                    System.out.print(sum+" ");
+                }
+                else
+                {
+                    flow+=2;
+                    System.out.print(flow+" ");
+                    sum=sum+flow;
+                    
+                }
+            }
+            System.out.println();
+        }
+    }
+}
